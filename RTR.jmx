@@ -1,0 +1,1643 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="3.2" jmeter="3.2 r1790748">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="RTR" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1520290346000</longProp>
+        <longProp name="ThreadGroup.end_time">1520290346000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
+          <collectionProp name="CookieManager.cookies"/>
+          <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+          <stringProp name="CookieManager.policy">standard</stringProp>
+          <stringProp name="CookieManager.implementation">org.apache.jmeter.protocol.http.control.HC4CookieHandler</stringProp>
+        </CookieManager>
+        <hashTree/>
+        <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="JDBC Connection Configuration" enabled="true">
+          <boolProp name="autocommit">true</boolProp>
+          <stringProp name="checkQuery">Select 1</stringProp>
+          <stringProp name="connectionAge">5000</stringProp>
+          <stringProp name="dataSource">hautelook</stringProp>
+          <stringProp name="dbUrl">jdbc:mysql://dbmaster.staging.aws.hautelook.net:3306/hautelook</stringProp>
+          <stringProp name="driver">com.mysql.jdbc.Driver</stringProp>
+          <boolProp name="keepAlive">true</boolProp>
+          <stringProp name="password">hautelook</stringProp>
+          <stringProp name="poolMax">10</stringProp>
+          <stringProp name="timeout">10000</stringProp>
+          <stringProp name="transactionIsolation">DEFAULT</stringProp>
+          <stringProp name="trimInterval">60000</stringProp>
+          <stringProp name="username">hautelook</stringProp>
+        </JDBCDataSource>
+        <hashTree/>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Content-Type</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Accept</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Authorization</stringProp>
+              <stringProp name="Header.value">HWS a</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Cache-Control</stringProp>
+              <stringProp name="Header.value">no-cache</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">X-Signature</stringProp>
+              <stringProp name="Header.value">hX1UGq69n2KrH2jqq66OyGU8qtGB34OrqAUX9JfB04fQSwEXbGzpAzkCebNvIY+aOM/pS6Jw9rIHguJbQCr1xg==</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC Request" enabled="false">
+          <stringProp name="dataSource">hautelook</stringProp>
+          <stringProp name="query">update return_items
+set order_id= 30334150
+where order_id in (30334158, 33238155,33078599,34923190,35465771)</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Update Statement</stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="variableNames"></stringProp>
+        </JDBCSampler>
+        <hashTree>
+          <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
+        </hashTree>
+        <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="View Results in Table" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="returns" enabled="false">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="return_source" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">Member Care</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">return_source</stringProp>
+              </elementProp>
+              <elementProp name="member_id" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">46409673</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">member_id</stringProp>
+              </elementProp>
+              <elementProp name="dry_run" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">0</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">dry_run</stringProp>
+              </elementProp>
+              <elementProp name="allow_complete" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">1</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">allow_complete</stringProp>
+              </elementProp>
+              <elementProp name="order_id" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">52280064</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">order_id</stringProp>
+              </elementProp>
+              <elementProp name="item_id" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">144504526</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">item_id</stringProp>
+              </elementProp>
+              <elementProp name="reason" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">Did not like</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">reason</stringProp>
+              </elementProp>
+              <elementProp name="return_payment_preference" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">Original_Payment</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">return_payment_preference</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">stg.hautelook.com</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/v3/returns</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="single order return" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{ &quot;ProcessedDateTime&quot;: &quot;2017-12-28T20:14:45.549Z&quot;,&#xd;
+  &quot;SourceTransactionIdentifier&quot;: &quot;64dbad71-ed62-4345-a25d-3dbba69e4f0b&quot;,&#xd;
+  &quot;StoreNumber&quot;: &quot;0&quot;,&#xd;
+  &quot;action_name&quot;: &quot;Returns&quot;,&#xd;
+  &quot;action_payload&quot;: {&#xd;
+    &quot;order_items&quot;: [&#xd;
+      {&#xd;
+        &quot;order_item&quot;: {&#xd;
+          &quot;reason&quot;: &quot;Item is damaged&quot;,&#xd;
+          &quot;return_payment_preference&quot;: &quot;Original_Payment&quot;,&#xd;
+          &quot;order_id&quot;: &quot;52280209&quot;,&#xd;
+          &quot;item_id&quot;: &quot;144504718&quot;&#xd;
+        }&#xd;
+      }&#xd;
+    ],&#xd;
+    &quot;return&quot;: {&#xd;
+      &quot;return_source&quot;: &quot;RTR&quot;,&#xd;
+      &quot;member_id&quot;: &quot;46409673&quot;,&#xd;
+      &quot;dry_run&quot;: 1,&#xd;
+      &quot;gift_return&quot;: 0&#xd;
+    }&#xd;
+  },&#xd;
+  &quot;RegisterNumber&quot;: &quot;4206&quot;,&#xd;
+  &quot;EmployeeNumber&quot;: &quot;1510213&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">return-groups-stg.hautelook.net</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/v3/rtr</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="TestPlan.comments">return single item from an order</stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="multiple items returns" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{ &quot;ProcessedDateTime&quot;: &quot;2017-12-28T20:14:45.549Z&quot;,&#xd;
+  &quot;SourceTransactionIdentifier&quot;: &quot;64dbad71-ed62-4345-a25d-3dbba69e4f0b&quot;,&#xd;
+  &quot;StoreNumber&quot;: &quot;0&quot;,&#xd;
+  &quot;action_name&quot;: &quot;Returns&quot;,&#xd;
+  &quot;action_payload&quot;: {&#xd;
+    &quot;order_items&quot;: [&#xd;
+      {&#xd;
+        &quot;order_item&quot;: {&#xd;
+          &quot;reason&quot;: &quot;Item is damaged&quot;,&#xd;
+          &quot;return_payment_preference&quot;: &quot;Original_Payment&quot;,&#xd;
+          &quot;order_id&quot;: &quot;52280216&quot;,&#xd;
+          &quot;item_id&quot;: &quot;144504725&quot;&#xd;
+        }&#xd;
+      },&#xd;
+      {&#xd;
+        &quot;order_item&quot;: {&#xd;
+          &quot;reason&quot;: &quot;Item is damaged&quot;,&#xd;
+          &quot;return_payment_preference&quot;: &quot;Original_Payment&quot;,&#xd;
+          &quot;order_id&quot;: &quot;52280216&quot;,&#xd;
+          &quot;item_id&quot;: &quot;144504726&quot;&#xd;
+        }&#xd;
+      },&#xd;
+      {&#xd;
+        &quot;order_item&quot;: {&#xd;
+          &quot;reason&quot;: &quot;Item is damaged&quot;,&#xd;
+          &quot;return_payment_preference&quot;: &quot;Original_Payment&quot;,&#xd;
+          &quot;order_id&quot;: &quot;52280216&quot;,&#xd;
+          &quot;item_id&quot;: &quot;144504727&quot;&#xd;
+        }&#xd;
+      },&#xd;
+      {&#xd;
+        &quot;order_item&quot;: {&#xd;
+          &quot;reason&quot;: &quot;Item is damaged&quot;,&#xd;
+          &quot;return_payment_preference&quot;: &quot;Original_Payment&quot;,&#xd;
+          &quot;order_id&quot;: &quot;52280216&quot;,&#xd;
+          &quot;item_id&quot;: &quot;144504728&quot;&#xd;
+        }&#xd;
+      }&#xd;
+    ],&#xd;
+    &quot;return&quot;: {&#xd;
+      &quot;return_source&quot;: &quot;RTR&quot;,&#xd;
+      &quot;member_id&quot;: &quot;46409673&quot;,&#xd;
+      &quot;dry_run&quot;: 1,&#xd;
+      &quot;gift_return&quot;: 0&#xd;
+    }&#xd;
+  },&#xd;
+  &quot;RegisterNumber&quot;: &quot;4206&quot;,&#xd;
+  &quot;EmployeeNumber&quot;: &quot;1510213&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">return-groups-stg.hautelook.net</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/v3/rtr</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="TestPlan.comments">return multiple items from single order</stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="return 6 more from muliple orders" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{ &quot;ProcessedDateTime&quot;: &quot;2017-12-28T20:14:45.549Z&quot;,&#xd;
+  &quot;SourceTransactionIdentifier&quot;: &quot;64dbad71-ed62-4345-a25d-3dbba69e4f0b&quot;,&#xd;
+  &quot;StoreNumber&quot;: &quot;0&quot;,&#xd;
+  &quot;action_name&quot;: &quot;Returns&quot;,&#xd;
+  &quot;action_payload&quot;: {&#xd;
+    &quot;order_items&quot;: [&#xd;
+      {&#xd;
+        &quot;order_item&quot;: {&#xd;
+          &quot;reason&quot;: &quot;Item is damaged&quot;,&#xd;
+          &quot;return_payment_preference&quot;: &quot;Original_Payment&quot;,&#xd;
+          &quot;order_id&quot;: &quot;52280168&quot;,&#xd;
+          &quot;item_id&quot;: &quot;144504660&quot;&#xd;
+        }&#xd;
+      },&#xd;
+      {&#xd;
+        &quot;order_item&quot;: {&#xd;
+          &quot;reason&quot;: &quot;Item is damaged&quot;,&#xd;
+          &quot;return_payment_preference&quot;: &quot;Original_Payment&quot;,&#xd;
+          &quot;order_id&quot;: &quot;52280168&quot;,&#xd;
+          &quot;item_id&quot;: &quot;144504661&quot;&#xd;
+        }&#xd;
+      },&#xd;
+      {&#xd;
+        &quot;order_item&quot;: {&#xd;
+          &quot;reason&quot;: &quot;Item is damaged&quot;,&#xd;
+          &quot;return_payment_preference&quot;: &quot;Original_Payment&quot;,&#xd;
+          &quot;order_id&quot;: &quot;52280169&quot;,&#xd;
+          &quot;item_id&quot;: &quot;144504662&quot;&#xd;
+        }&#xd;
+      },&#xd;
+      {&#xd;
+        &quot;order_item&quot;: {&#xd;
+          &quot;reason&quot;: &quot;Item is damaged&quot;,&#xd;
+          &quot;return_payment_preference&quot;: &quot;Original_Payment&quot;,&#xd;
+          &quot;order_id&quot;: &quot;52280170&quot;,&#xd;
+          &quot;item_id&quot;: &quot;144504663&quot;&#xd;
+        }&#xd;
+      },&#xd;
+      {&#xd;
+        &quot;order_item&quot;: {&#xd;
+          &quot;reason&quot;: &quot;Item is damaged&quot;,&#xd;
+          &quot;return_payment_preference&quot;: &quot;Original_Payment&quot;,&#xd;
+          &quot;order_id&quot;: &quot;52280173&quot;,&#xd;
+          &quot;item_id&quot;: &quot;144504666&quot;&#xd;
+        }&#xd;
+      },&#xd;
+      {&#xd;
+        &quot;order_item&quot;: {&#xd;
+          &quot;reason&quot;: &quot;Item is damaged&quot;,&#xd;
+          &quot;return_payment_preference&quot;: &quot;Original_Payment&quot;,&#xd;
+          &quot;order_id&quot;: &quot;52280172&quot;,&#xd;
+          &quot;item_id&quot;: &quot;144504665&quot;&#xd;
+        }&#xd;
+      },&#xd;
+      {&#xd;
+        &quot;order_item&quot;: {&#xd;
+          &quot;reason&quot;: &quot;Item is damaged&quot;,&#xd;
+          &quot;return_payment_preference&quot;: &quot;Original_Payment&quot;,&#xd;
+          &quot;order_id&quot;: &quot;52280171&quot;,&#xd;
+          &quot;item_id&quot;: &quot;144504664&quot;&#xd;
+        }&#xd;
+      },&#xd;
+      {&#xd;
+        &quot;order_item&quot;: {&#xd;
+          &quot;reason&quot;: &quot;Item is damaged&quot;,&#xd;
+          &quot;return_payment_preference&quot;: &quot;Original_Payment&quot;,&#xd;
+          &quot;order_id&quot;: &quot;52280174&quot;,&#xd;
+          &quot;item_id&quot;: &quot;144504667&quot;&#xd;
+        }&#xd;
+      }&#xd;
+    ],&#xd;
+    &quot;return&quot;: {&#xd;
+      &quot;return_source&quot;: &quot;RTR&quot;,&#xd;
+      &quot;member_id&quot;: &quot;46409673&quot;,&#xd;
+      &quot;dry_run&quot;: 1,&#xd;
+      &quot;gift_return&quot;: 0&#xd;
+    }&#xd;
+  },&#xd;
+  &quot;RegisterNumber&quot;: &quot;4206&quot;,&#xd;
+  &quot;EmployeeNumber&quot;: &quot;1510213&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">return-groups-stg.hautelook.net</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/v3/rtr</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="TestPlan.comments">returning 6 or more items from multiple orders</stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="retrun with qty&gt;1" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{ &quot;ProcessedDateTime&quot;: &quot;2017-12-28T20:14:45.549Z&quot;,&#xd;
+  &quot;SourceTransactionIdentifier&quot;: &quot;64dbad71-ed62-4345-a25d-3dbba69e4f0b&quot;,&#xd;
+  &quot;StoreNumber&quot;: &quot;0&quot;,&#xd;
+  &quot;action_name&quot;: &quot;Returns&quot;,&#xd;
+  &quot;action_payload&quot;: {&#xd;
+    &quot;order_items&quot;: [&#xd;
+      {&#xd;
+        &quot;order_item&quot;: {&#xd;
+          &quot;reason&quot;: &quot;Item is damaged&quot;,&#xd;
+          &quot;return_payment_preference&quot;: &quot;Original_Payment&quot;,&#xd;
+          &quot;order_id&quot;: &quot;52280175&quot;,&#xd;
+          &quot;item_id&quot;: &quot;144504668&quot;&#xd;
+        }&#xd;
+      },&#xd;
+      {&#xd;
+        &quot;order_item&quot;: {&#xd;
+          &quot;reason&quot;: &quot;Item is damaged&quot;,&#xd;
+          &quot;return_payment_preference&quot;: &quot;Original_Payment&quot;,&#xd;
+          &quot;order_id&quot;: &quot;52280175&quot;,&#xd;
+          &quot;item_id&quot;: &quot;144504669&quot;&#xd;
+        }&#xd;
+      },&#xd;
+      {&#xd;
+        &quot;order_item&quot;: {&#xd;
+          &quot;reason&quot;: &quot;Item is damaged&quot;,&#xd;
+          &quot;return_payment_preference&quot;: &quot;Original_Payment&quot;,&#xd;
+          &quot;order_id&quot;: &quot;52280176&quot;,&#xd;
+          &quot;item_id&quot;: &quot;144504670&quot;&#xd;
+        }&#xd;
+      },&#xd;
+      {&#xd;
+        &quot;order_item&quot;: {&#xd;
+          &quot;reason&quot;: &quot;Item is damaged&quot;,&#xd;
+          &quot;return_payment_preference&quot;: &quot;Original_Payment&quot;,&#xd;
+          &quot;order_id&quot;: &quot;52280176&quot;,&#xd;
+          &quot;item_id&quot;: &quot;144504671&quot;&#xd;
+        }&#xd;
+      },&#xd;
+      {&#xd;
+        &quot;order_item&quot;: {&#xd;
+          &quot;reason&quot;: &quot;Item is damaged&quot;,&#xd;
+          &quot;return_payment_preference&quot;: &quot;Original_Payment&quot;,&#xd;
+          &quot;order_id&quot;: &quot;52280176&quot;,&#xd;
+          &quot;item_id&quot;: &quot;144504672&quot;&#xd;
+        }&#xd;
+      },{&#xd;
+        &quot;order_item&quot;: {&#xd;
+          &quot;reason&quot;: &quot;Item is damaged&quot;,&#xd;
+          &quot;return_payment_preference&quot;: &quot;Original_Payment&quot;,&#xd;
+          &quot;order_id&quot;: &quot;52280176&quot;,&#xd;
+          &quot;item_id&quot;: &quot;144504673&quot;&#xd;
+        }&#xd;
+      },&#xd;
+      {&#xd;
+        &quot;order_item&quot;: {&#xd;
+          &quot;reason&quot;: &quot;Item is damaged&quot;,&#xd;
+          &quot;return_payment_preference&quot;: &quot;Original_Payment&quot;,&#xd;
+          &quot;order_id&quot;: &quot;52280176&quot;,&#xd;
+          &quot;item_id&quot;: &quot;144504674&quot;&#xd;
+        }&#xd;
+      }&#xd;
+    ],&#xd;
+    &quot;return&quot;: {&#xd;
+      &quot;return_source&quot;: &quot;RTR&quot;,&#xd;
+      &quot;member_id&quot;: &quot;46409673&quot;,&#xd;
+      &quot;dry_run&quot;: 1,&#xd;
+      &quot;gift_return&quot;: 0&#xd;
+    }&#xd;
+  },&#xd;
+  &quot;RegisterNumber&quot;: &quot;4206&quot;,&#xd;
+  &quot;EmployeeNumber&quot;: &quot;1510213&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">return-groups-stg.hautelook.net</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/v3/rtr</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="TestPlan.comments">Selecting more than 5 items and then selecting some items which has quantity more than 1</stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Return 2 items from 2 different orders" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{ &quot;ProcessedDateTime&quot;: &quot;2017-12-28T20:14:45.549Z&quot;,&#xd;
+  &quot;SourceTransactionIdentifier&quot;: &quot;64dbad71-ed62-4345-a25d-3dbba69e4f0b&quot;,&#xd;
+  &quot;StoreNumber&quot;: &quot;0&quot;,&#xd;
+  &quot;action_name&quot;: &quot;Returns&quot;,&#xd;
+  &quot;action_payload&quot;: {&#xd;
+    &quot;order_items&quot;: [&#xd;
+      {&#xd;
+        &quot;order_item&quot;: {&#xd;
+          &quot;reason&quot;: &quot;Item is damaged&quot;,&#xd;
+          &quot;return_payment_preference&quot;: &quot;Original_Payment&quot;,&#xd;
+          &quot;order_id&quot;: &quot;52280180&quot;,&#xd;
+          &quot;item_id&quot;: &quot;144504681&quot;&#xd;
+        }&#xd;
+      },&#xd;
+      {&#xd;
+        &quot;order_item&quot;: {&#xd;
+          &quot;reason&quot;: &quot;Item is damaged&quot;,&#xd;
+          &quot;return_payment_preference&quot;: &quot;Original_Payment&quot;,&#xd;
+          &quot;order_id&quot;: &quot;52280146&quot;,&#xd;
+          &quot;item_id&quot;: &quot;144504626&quot;&#xd;
+        }&#xd;
+      }&#xd;
+    ],&#xd;
+    &quot;return&quot;: {&#xd;
+      &quot;return_source&quot;: &quot;RTR&quot;,&#xd;
+      &quot;member_id&quot;: &quot;46409673&quot;,&#xd;
+      &quot;dry_run&quot;: 1,&#xd;
+      &quot;gift_return&quot;: 0&#xd;
+    }&#xd;
+  },&#xd;
+  &quot;RegisterNumber&quot;: &quot;4206&quot;,&#xd;
+  &quot;EmployeeNumber&quot;: &quot;1510213&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">return-groups-stg.hautelook.net</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/v3/rtr</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="TestPlan.comments">Return 2 items from 2 different orders where 1 item will fail</stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+              <stringProp name="51508">400</stringProp>
+            </collectionProp>
+            <stringProp name="TestPlan.comments">To check if 1 order return gets 200 &amp; other gets 400</stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">40</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <ResultCollector guiclass="AssertionVisualizer" testclass="ResultCollector" testname="Assertion Results" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
+          <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="return to original payment" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{ &quot;ProcessedDateTime&quot;: &quot;2017-12-28T20:14:45.549Z&quot;,&#xd;
+  &quot;SourceTransactionIdentifier&quot;: &quot;64dbad71-ed62-4345-a25d-3dbba69e4f0b&quot;,&#xd;
+  &quot;StoreNumber&quot;: &quot;0&quot;,&#xd;
+  &quot;action_name&quot;: &quot;Returns&quot;,&#xd;
+  &quot;action_payload&quot;: {&#xd;
+    &quot;order_items&quot;: [&#xd;
+      {&#xd;
+        &quot;order_item&quot;: {&#xd;
+          &quot;reason&quot;: &quot;Item is damaged&quot;,&#xd;
+          &quot;return_payment_preference&quot;: &quot;Original_Payment&quot;,&#xd;
+          &quot;order_id&quot;: &quot;52280159&quot;,&#xd;
+          &quot;item_id&quot;: &quot;144504648&quot;&#xd;
+        }&#xd;
+      },&#xd;
+      {&#xd;
+        &quot;order_item&quot;: {&#xd;
+          &quot;reason&quot;: &quot;Item is damaged&quot;,&#xd;
+          &quot;return_payment_preference&quot;: &quot;Original_Payment&quot;,&#xd;
+          &quot;order_id&quot;: &quot;52280160&quot;,&#xd;
+          &quot;item_id&quot;: &quot;144504649&quot;&#xd;
+        }&#xd;
+      }&#xd;
+    ],&#xd;
+    &quot;return&quot;: {&#xd;
+      &quot;return_source&quot;: &quot;RTR&quot;,&#xd;
+      &quot;member_id&quot;: &quot;46409673&quot;,&#xd;
+      &quot;dry_run&quot;: 1,&#xd;
+      &quot;gift_return&quot;: 0&#xd;
+    }&#xd;
+  },&#xd;
+  &quot;RegisterNumber&quot;: &quot;4206&quot;,&#xd;
+  &quot;EmployeeNumber&quot;: &quot;1510213&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">return-groups-stg.hautelook.net</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/v3/rtr</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="TestPlan.comments">Returning to original payment method</stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="return to GC" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{ &quot;ProcessedDateTime&quot;: &quot;2017-12-28T20:14:45.549Z&quot;,&#xd;
+  &quot;SourceTransactionIdentifier&quot;: &quot;64dbad71-ed62-4345-a25d-3dbba69e4f0b&quot;,&#xd;
+  &quot;StoreNumber&quot;: &quot;0&quot;,&#xd;
+  &quot;action_name&quot;: &quot;Returns&quot;,&#xd;
+  &quot;action_payload&quot;: {&#xd;
+    &quot;order_items&quot;: [&#xd;
+      {&#xd;
+        &quot;order_item&quot;: {&#xd;
+          &quot;reason&quot;: &quot;Item is damaged&quot;,&#xd;
+          &quot;return_payment_preference&quot;: &quot;Original_Payment&quot;,&#xd;
+          &quot;order_id&quot;: &quot;52280161&quot;,&#xd;
+          &quot;item_id&quot;: &quot;144504650&quot;&#xd;
+        }&#xd;
+      }&#xd;
+    ],&#xd;
+    &quot;return&quot;: {&#xd;
+      &quot;return_source&quot;: &quot;RTR&quot;,&#xd;
+      &quot;member_id&quot;: &quot;46409673&quot;,&#xd;
+      &quot;dry_run&quot;: 1,&#xd;
+      &quot;gift_return&quot;: 0&#xd;
+    }&#xd;
+  },&#xd;
+  &quot;RegisterNumber&quot;: &quot;4206&quot;,&#xd;
+  &quot;EmployeeNumber&quot;: &quot;1510213&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">return-groups-stg.hautelook.net</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/v3/rtr</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="TestPlan.comments">Returning to gift card</stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="return with coupon" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{ &quot;ProcessedDateTime&quot;: &quot;2017-12-28T20:14:45.549Z&quot;,&#xd;
+  &quot;SourceTransactionIdentifier&quot;: &quot;64dbad71-ed62-4345-a25d-3dbba69e4f0b&quot;,&#xd;
+  &quot;StoreNumber&quot;: &quot;0&quot;,&#xd;
+  &quot;action_name&quot;: &quot;Returns&quot;,&#xd;
+  &quot;action_payload&quot;: {&#xd;
+    &quot;order_items&quot;: [&#xd;
+      {&#xd;
+        &quot;order_item&quot;: {&#xd;
+          &quot;reason&quot;: &quot;Item is damaged&quot;,&#xd;
+          &quot;return_payment_preference&quot;: &quot;Original_Payment&quot;,&#xd;
+          &quot;order_id&quot;: &quot;52280162&quot;,&#xd;
+          &quot;item_id&quot;: &quot;144504651&quot;&#xd;
+        }&#xd;
+      }&#xd;
+    ],&#xd;
+    &quot;return&quot;: {&#xd;
+      &quot;return_source&quot;: &quot;RTR&quot;,&#xd;
+      &quot;member_id&quot;: &quot;46409673&quot;,&#xd;
+      &quot;dry_run&quot;: 1,&#xd;
+      &quot;gift_return&quot;: 0&#xd;
+    }&#xd;
+  },&#xd;
+  &quot;RegisterNumber&quot;: &quot;4206&quot;,&#xd;
+  &quot;EmployeeNumber&quot;: &quot;1510213&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">return-groups-stg.hautelook.net</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/v3/rtr</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="TestPlan.comments">Returning order with coupon</stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="return with item qty&gt;1 &amp; some of them already returned" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{ &quot;ProcessedDateTime&quot;: &quot;2017-12-28T20:14:45.549Z&quot;,&#xd;
+  &quot;SourceTransactionIdentifier&quot;: &quot;64dbad71-ed62-4345-a25d-3dbba69e4f0b&quot;,&#xd;
+  &quot;StoreNumber&quot;: &quot;0&quot;,&#xd;
+  &quot;action_name&quot;: &quot;Returns&quot;,&#xd;
+  &quot;action_payload&quot;: {&#xd;
+    &quot;order_items&quot;: [&#xd;
+      {&#xd;
+        &quot;order_item&quot;: {&#xd;
+          &quot;reason&quot;: &quot;Item is damaged&quot;,&#xd;
+          &quot;return_payment_preference&quot;: &quot;Original_Payment&quot;,&#xd;
+          &quot;order_id&quot;: &quot;52280175&quot;,&#xd;
+          &quot;item_id&quot;: &quot;144504669&quot;&#xd;
+        }&#xd;
+      },&#xd;
+      {&#xd;
+        &quot;order_item&quot;: {&#xd;
+          &quot;reason&quot;: &quot;Item is damaged&quot;,&#xd;
+          &quot;return_payment_preference&quot;: &quot;Original_Payment&quot;,&#xd;
+          &quot;order_id&quot;: &quot;52280175&quot;,&#xd;
+          &quot;item_id&quot;: &quot;144504668&quot;&#xd;
+        }&#xd;
+      }&#xd;
+    ],&#xd;
+    &quot;return&quot;: {&#xd;
+      &quot;return_source&quot;: &quot;RTR&quot;,&#xd;
+      &quot;member_id&quot;: &quot;46409673&quot;,&#xd;
+      &quot;dry_run&quot;: 1,&#xd;
+      &quot;gift_return&quot;: 0&#xd;
+    }&#xd;
+  },&#xd;
+  &quot;RegisterNumber&quot;: &quot;4206&quot;,&#xd;
+  &quot;EmployeeNumber&quot;: &quot;1510213&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">return-groups-stg.hautelook.net</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/v3/rtr</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="TestPlan.comments"> Returning an order where an item has more than 1 quantity and some of them have already been returned</stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings"/>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">8</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <ResultCollector guiclass="AssertionVisualizer" testclass="ResultCollector" testname="Assertion Results" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
+          <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="return to different payment methods" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{ &quot;ProcessedDateTime&quot;: &quot;2017-12-28T20:14:45.549Z&quot;,&#xd;
+  &quot;SourceTransactionIdentifier&quot;: &quot;64dbad71-ed62-4345-a25d-3dbba69e4f0b&quot;,&#xd;
+  &quot;StoreNumber&quot;: &quot;0&quot;,&#xd;
+  &quot;action_name&quot;: &quot;Returns&quot;,&#xd;
+  &quot;action_payload&quot;: {&#xd;
+    &quot;order_items&quot;: [&#xd;
+      {&#xd;
+        &quot;order_item&quot;: {&#xd;
+          &quot;reason&quot;: &quot;Item is damaged&quot;,&#xd;
+          &quot;return_payment_preference&quot;: &quot;Original_Payment&quot;,&#xd;
+          &quot;order_id&quot;: &quot;52280163&quot;,&#xd;
+          &quot;item_id&quot;: &quot;144504652&quot;&#xd;
+        }&#xd;
+      },&#xd;
+      {&#xd;
+        &quot;order_item&quot;: {&#xd;
+          &quot;reason&quot;: &quot;Item is damaged&quot;,&#xd;
+          &quot;return_payment_preference&quot;: &quot;Original_Payment&quot;,&#xd;
+          &quot;order_id&quot;: &quot;52280164&quot;,&#xd;
+          &quot;item_id&quot;: &quot;144504653&quot;&#xd;
+        }&#xd;
+      },&#xd;
+      {&#xd;
+        &quot;order_item&quot;: {&#xd;
+          &quot;reason&quot;: &quot;Item is damaged&quot;,&#xd;
+          &quot;return_payment_preference&quot;: &quot;Original_Payment&quot;,&#xd;
+          &quot;order_id&quot;: &quot;52280165&quot;,&#xd;
+          &quot;item_id&quot;: &quot;144504654&quot;&#xd;
+        }&#xd;
+      },&#xd;
+      {&#xd;
+        &quot;order_item&quot;: {&#xd;
+          &quot;reason&quot;: &quot;Item is damaged&quot;,&#xd;
+          &quot;return_payment_preference&quot;: &quot;Original_Payment&quot;,&#xd;
+          &quot;order_id&quot;: &quot;52280166&quot;,&#xd;
+          &quot;item_id&quot;: &quot;144504655&quot;&#xd;
+        }&#xd;
+      }&#xd;
+    ],&#xd;
+    &quot;return&quot;: {&#xd;
+      &quot;return_source&quot;: &quot;RTR&quot;,&#xd;
+      &quot;member_id&quot;: &quot;46409673&quot;,&#xd;
+      &quot;dry_run&quot;: 1,&#xd;
+      &quot;gift_return&quot;: 0&#xd;
+    }&#xd;
+  },&#xd;
+  &quot;RegisterNumber&quot;: &quot;4206&quot;,&#xd;
+  &quot;EmployeeNumber&quot;: &quot;1510213&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">return-groups-stg.hautelook.net</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/v3/rtr</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="TestPlan.comments"> Returning items from different orders which used different payment methods (like PayPal, cc, HL credit).Correct amount should be returned for each payment method</stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="checked UPC returned" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{ &quot;ProcessedDateTime&quot;: &quot;2017-12-28T20:14:45.549Z&quot;,&#xd;
+  &quot;SourceTransactionIdentifier&quot;: &quot;64dbad71-ed62-4345-a25d-3dbba69e4f0b&quot;,&#xd;
+  &quot;StoreNumber&quot;: &quot;0&quot;,&#xd;
+  &quot;action_name&quot;: &quot;Returns&quot;,&#xd;
+  &quot;action_payload&quot;: {&#xd;
+    &quot;order_items&quot;: [&#xd;
+      {&#xd;
+        &quot;order_item&quot;: {&#xd;
+          &quot;reason&quot;: &quot;Item is damaged&quot;,&#xd;
+          &quot;return_payment_preference&quot;: &quot;Original_Payment&quot;,&#xd;
+          &quot;order_id&quot;: &quot;52280179&quot;,&#xd;
+          &quot;item_id&quot;: &quot;144504680&quot;&#xd;
+        }&#xd;
+      }&#xd;
+    ],&#xd;
+    &quot;return&quot;: {&#xd;
+      &quot;return_source&quot;: &quot;RTR&quot;,&#xd;
+      &quot;member_id&quot;: &quot;46409673&quot;,&#xd;
+      &quot;dry_run&quot;: 1,&#xd;
+      &quot;gift_return&quot;: 0&#xd;
+    }&#xd;
+  },&#xd;
+  &quot;RegisterNumber&quot;: &quot;4206&quot;,&#xd;
+  &quot;EmployeeNumber&quot;: &quot;1510213&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">return-groups-stg.hautelook.net</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/v3/rtr</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="TestPlan.comments">check that there is a upc and nupc field in the response</stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="116008">upc</stringProp>
+              <stringProp name="105183568">nupc
+</stringProp>
+              <stringProp name="0"></stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">34</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <ResultCollector guiclass="AssertionVisualizer" testclass="ResultCollector" testname="Assertion Results" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
+        </hashTree>
+        <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="View Results in Table" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+    <WorkBench guiclass="WorkBenchGui" testclass="WorkBench" testname="WorkBench" enabled="true">
+      <boolProp name="WorkBench.save">true</boolProp>
+    </WorkBench>
+    <hashTree/>
+  </hashTree>
+</jmeterTestPlan>
